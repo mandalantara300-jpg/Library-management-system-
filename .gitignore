@@ -1,0 +1,11 @@
+# SQLite database generated at runtime
+library.db
+
+# Python bytecode & cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment & OS files
+.DS_Store
+.env

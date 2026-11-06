@@ -1,78 +1,78 @@
 # 📚 CampusShelf — Smart Campus Library Management System
 
-A complete, production-grade **Library Management System** built using **100% Python standard-library modules** (`http.server`, `sqlite3`, `tkinter`, `urllib.request`). Zero external packages, zero `pip install`, and zero configuration required!
+A complete, production-grade **Campus Library Management System** built using **100% Python standard-library modules** (`http.server`, `sqlite3`, `tkinter`, `urllib.request`). Zero external packages, zero `pip install`, and zero configuration required!
+
+Includes both a **Modern Localhost Web App** (`web_app.py`) and a **Desktop GUI Application** (`main.py`) running on the same 500-book SQLite database.
 
 ---
 
-## 🌟 Key Features & Interface Upgrades
+## 🌟 Advanced Features & Tools
 
-### 1. 🔒 Independent Catalog Scrolling
-* The top navigation bar, KPI summary cards, 2-part switcher, and search/filter controls **remain permanently fixed** on screen.
-* **Only the library catalog area scrolls** (with sticky column headers), so you never lose your place or have to scroll back up to search or filter!
+### 1. 📷 Real-Time Barcode & Card Camera Scanner
+* **Camera Viewfinder**: Real-time camera feed with targeting reticle and red laser sweep line animation (`navigator.mediaDevices.getUserMedia`).
+* **Handheld USB Scanner Compatible**: Supports physical USB barcode scanner guns (wedge input with auto-submit).
+* **Smart Auto-Routing**:
+  * Scanning a **Book Barcode** or typing an ID automatically opens the **"📤 Give Book"** dialog if available, or **"📥 Receive Book"** dialog if currently issued!
+  * Scanning a **Member ID** (`#M-X`) instantly loads their profile or selects them as the borrower!
 
-### 2. 🟢 🔴 Two Dedicated Inventory Parts
-* **🟢 Part 1: Available Books**:
-  * Shows all copies currently in the library ready to be borrowed.
-  * Columns: ID, Title & Author, Genre, ISBN, Shelf Location, Status.
-  * Action: A prominent **"📤 Give Book"** button on each row.
-* **🔴 Part 2: Issued Books**:
-  * Shows all copies currently out on loan.
-  * Columns: ID, Title, Currently With (Borrower), Contact, Issued Date, Due Date, Status (On schedule / Overdue).
-  * Action: A prominent **"📥 Receive Book"** button on each row.
-* Dynamic counter badges on the tabs update in real time (e.g. `Available: 490`, `Issued: 10`).
+### 2. 🪪 Printable Student & Faculty Library Cards
+* High-definition credit card proportions (CR80 ratio) with modern gradient backdrop and university seal.
+* Displays:
+  * Member Photo Avatar with initials
+  * Member Name & Unique Member ID (`#M-X`)
+  * Member Type pill (`STUDENT` / `FACULTY` / `STAFF`)
+  * Contact info (Email & Phone)
+  * Live **Code 39 SVG Barcode** for laser/optical scanning
+* **1-Click Print**: Formatted with dedicated print CSS so clicking **"Print Library Card"** isolates and prints only the card at full DPI.
 
-### 3. 📤 Short "Give Book" Box with Live Member Typing Search
-* When you click **"Give Book"** on an available copy, a compact popup opens:
-  * Shows the book title, author, and Copy ID badge.
-  * **Typing Live Search**: Instantly filters members as you type by **Name**, **Phone Number**, **Email**, or **Unique Member ID (`#M-X`)**.
-  * Displays borrower quota status (e.g. `1/3 books borrowed`).
-  * Option to click **"+ Type New Borrower"** on the spot if the patron is not yet registered.
-  * Choose loan duration (defaults to 14 days).
-  * Click **"✓ Confirm & Give Book"** — the book immediately moves to the **Issued** part!
+### 3. 🧾 Printable 80mm Thermal Checkout Receipts
+* Generates thermal-style borrowing receipts on loan checkout:
+  * Library header & timestamp
+  * Patron name & Member ID (`#M-X`)
+  * Book title, author, Copy ID, and designated **Return Shelf Location** (e.g. `Shelf A-04`)
+  * **Return Due Date** highlighted in bold
+  * Barcode of the loan transaction
+  * Fine terms ($0.50/day overdue fee reminder)
+* Print-ready dialog for standard thermal POS receipt printers or standard 8.5x11 paper.
 
-### 4. 📥 "Receive Book" Confirmation Box (Fixed & Verified)
-* When you click **"Receive Book"** on any issued copy, the confirmation modal opens:
-  * **Book Details**: Copy ID, Title, Author, and the exact **Shelf Location** to return it to (e.g. `Shelf A-04`).
-  * **Who is returning it**: Borrower Unique Member ID (`#M-X`), Full Name, Phone, and Email.
-  * **Overdue Status & Fine**: Live alert indicating if the book is on time or overdue by X days ($0.50/day fine).
-  * Condition check: `[x] Book inspected and received in good condition`.
-  * Click **"✓ Confirm & Receive Book"** — updates status to `Available` and moves it right back to Part 1!
+### 4. 👤 Patron / Student Self-Service Kiosk
+* A dedicated patron portal tab (`👤 Patron Kiosk`) where students and staff can:
+  * Look up their account with Member ID (`#M-1`) or email.
+  * View currently checked out books with color-coded **due date countdown badges** (green on-schedule, red overdue with fines).
+  * Check active hold queue reservations.
+  * **Self-Service Waitlist Holds**: Search all currently borrowed books in the collection and click **"📌 Place Hold"** to reserve their spot in line!
 
-### 5. 👆 Interactive Clickable KPI Summary Cards
-Every top KPI card is now clickable with custom feedback:
-* **Total Inventory**: Resets search/genre filters and highlights the entire catalog.
-* **Available Copies**: Immediately jumps to **🟢 Part 1: Available Books** and pulses with an animated blue border.
-* **Issued Copies**: Immediately jumps to **🔴 Part 2: Issued Books** and pulses with an animated blue border.
-* **Overdue Loans**: Opens a dedicated modal listing all overdue loans with borrower contact info and a **1-click "Receive Book"** button.
-* **Pending Fines**: Opens a fine breakdown modal explaining the $0.50/day policy with a list of borrowers with active overdue fines and a **"Receive & Settle Fine"** shortcut.
+### 5. 🏷️ Book Shelf & Barcode Label Generator
+* In the Available Catalog, click **"🏷️"** on any book copy to generate a printable shelf & spine label with the book copy's barcode, shelf coordinate (e.g. `Shelf B-06`), ISBN, title, and author.
+
+### 6. 🔒 Independent Catalog Scrolling & Two-Part Layout
+* **Locked Navigation**: The top navbar, KPI cards, 2-part switcher, and search controls stay permanently pinned at the top.
+* **Scrolls Independently**: Only the 500-book catalog list scrolls vertically, with sticky table headers so you never lose context.
+* **🟢 Part 1: Available Books**: Ready for immediate borrowing with **"📤 Give Book"** and **"🏷️ Barcode Label"**.
+* **🔴 Part 2: Issued Books**: Displays borrower, contact, due date, overdue badges, and **"📥 Receive Book"** + **"🧾 Receipt"**.
+
+### 7. 👆 Interactive Clickable KPI Summary Cards
+* **Total Inventory**: Resets filters and highlights the catalog with an animated glow pulse.
+* **Available Copies**: Automatically jumps to Part 1 with a highlight pulse.
+* **Issued Copies**: Automatically jumps to Part 2 with a highlight pulse.
+* **Overdue Loans**: Opens a modal listing overdue loans with 1-click **Receive Book** action.
+* **Pending Fines**: Opens a fine breakdown modal ($0.50/day policy) with settle actions.
 * **Active Holds**: Switches directly to the Waitlist tab to view book hold queues.
 
-### 6. 🛡️ Strictly Librarian / Admin Mode
-* Student login portal and role-switcher removed.
-* Clean, streamlined single-portal admin workflow for library staff.
-
-### 7. 500 Curated Popular Books Pre-Loaded
-* Pre-loaded with 500 real books across Classics, Sci-Fi & Fantasy, Mystery, Tech, Non-Fiction, and Philosophy.
-* Complete metadata per copy: unique Copy ID, Title, Author, Genre, Shelf Location (e.g., `Shelf B-06`), ISBN, and Cover Art thumbnail.
-
-### 8. Book Holds & Waitlist (Reservations)
-* When a book is issued, patrons or librarians can place a hold.
-* Returning an issued book with a pending hold automatically fulfills the hold and notifies the patron!
+### 8. 500 Curated Popular Books Pre-Loaded
+* Pre-seeded with 500 real books across Classics, Sci-Fi & Fantasy, Mystery, Tech, Non-Fiction, and Philosophy (`seed_500_books.py`).
+* Unique Copy IDs, Shelves (e.g. `Shelf B-06`), ISBNs, and Open Library Cover URLs.
 
 ### 9. ⚡ Live ISBN Auto-Fill (Open Library API)
-* Click **➕ Add Book**, enter an ISBN (e.g. `9780061120084`), and click **"Lookup"**.
-* Fetches Title, Author, and Cover Art in 1 second via the Open Library API.
+* Click **➕ Add Book**, enter an ISBN (e.g. `9780061120084`), and click **"Lookup"** to fetch Title, Author, and Cover Art in 1 second.
 
-### 10. 🌙 Dark Mode / Light Mode
-* 1-click theme toggle in the header (persists preference in `localStorage`).
-
-### 11. 📊 Analytics & Interactive SVG Charts
-* Real-time Donut Chart showing Available vs Issued inventory breakdown.
-* Bar Chart showing collection distribution across all genres.
+### 10. 🌙 Dark Mode / Light Mode & SVG Analytics
+* 1-click theme toggle (persists in `localStorage`).
+* Real-time SVG Donut Chart (Available vs Issued) and Genre Distribution Bar Chart.
 
 ---
 
-## 🚀 How to Run
+## 🚀 How to Run Locally
 
 ### Web Edition on Localhost (Recommended)
 ```bash
@@ -83,32 +83,28 @@ python3 web_app.py
 Open in your browser:
 👉 **[http://localhost:8000](http://localhost:8000)**
 
-*(Keep the terminal running while using the web app).*
-
 ### Desktop Edition (Native Tkinter Window)
 ```bash
 python3 main.py
 ```
-Opens as a native desktop window with the two-part filter and give/receive dialogs connected to the same 500-book `library.db` database.
 
 ---
 
-## 🧪 Step-by-Step Test Walkthrough
+## ☁️ 1-Click Cloud Deployment (Free)
 
-1. **Test Scrolling**:
-   - In the browser, scroll through the 500 books with your mouse/trackpad.
-   - Notice that **only the book catalog scrolls**! The header, stats cards, and search controls stay locked at the top.
-2. **Switch Parts (Available vs Issued)**:
-   - Click **"🟢 Part 1: Available Books"** to see available copies.
-   - Click **"🔴 Part 2: Issued Books"** to see currently loaned books with borrower names and due dates.
-3. **Give a Book**:
-   - Under Available Books, click **"📤 Give Book"** on any book.
-   - In the short box, choose an existing member or type a new name (e.g. `John Doe`).
-   - Click **"Confirm & Give Book"**.
-   - Notice the book moves from Available to Issued immediately!
-4. **Receive a Book**:
-   - Switch to **"🔴 Part 2: Issued Books"**.
-   - Click **"📥 Receive Book"** on the copy you just issued.
-   - Review the confirmation box with the borrower's details and shelf location.
-   - Click **"Confirm & Receive Book"**.
-   - The book moves back to Available!
+CampusShelf is cloud-ready and contains zero external dependencies:
+
+### Deploy to Render
+1. Create a free account at [render.com](https://render.com).
+2. Click **New +** $\to$ **Web Service** $\to$ connect `mandalantara300-jpg/Library-management-system-`.
+3. Render automatically detects `render.yaml`:
+   * **Runtime**: Python 3
+   * **Build Command**: `python3 seed_500_books.py`
+   * **Start Command**: `python3 web_app.py`
+4. Click **Deploy Web Service** — your library is live on the web with a free HTTPS URL!
+
+### Deploy with Docker
+```bash
+docker build -t campusshelf .
+docker run -p 8000:8000 campusshelf
+```
