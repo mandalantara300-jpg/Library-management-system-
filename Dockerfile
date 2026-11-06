@@ -20,3 +20,4 @@ EXPOSE 8000
 
 # Run the CampusShelf server
 CMD ["python3", "web_app.py"]
+

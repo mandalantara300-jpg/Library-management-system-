@@ -1,16 +1,30 @@
 # 📚 CampusShelf — Smart Campus Library Management System
 
-A complete, production-grade **Campus Library Management System** built using **100% Python standard-library modules** (`http.server`, `sqlite3`, `tkinter`, `urllib.request`). Zero external packages, zero `pip install`, and zero configuration required!
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-CampusShelf%20Web%20App-2563eb?style=for-the-badge&logo=google-chrome&logoColor=white)](https://mandalantara300-jpg.github.io/Library-management-system-/)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Active-success?style=for-the-badge&logo=github)](https://mandalantara300-jpg.github.io/Library-management-system-/)
 
-Includes both a **Modern Localhost Web App** (`web_app.py`) and a **Desktop GUI Application** (`main.py`) running on the same 500-book SQLite database.
+> 🌐 **Live Website Link**: 👉 **[https://mandalantara300-jpg.github.io/Library-management-system-/](https://mandalantara300-jpg.github.io/Library-management-system-/)** 👈
+>
+> **Click the link above to immediately open and use CampusShelf right now in any browser, tablet, or phone — zero setup or installation required!**
 
 ---
 
-## 🌟 Advanced Features & Tools
+## 🌟 What is CampusShelf?
+
+CampusShelf is a modern, production-grade **Campus Library Management System** with 500 popular books pre-loaded, real-time barcode scanning, printable credit-card library badges, 80mm thermal borrowing receipts, hold queues, overdue fine tracking, and a self-service student kiosk.
+
+It is available in three distinct editions:
+1. 🌐 **Live Web Application (Cloud Hosted)**: Open anywhere at **[mandalantara300-jpg.github.io/Library-management-system-](https://mandalantara300-jpg.github.io/Library-management-system-/)**.
+2. 💻 **Localhost Full-Stack Web Edition**: Powered by Python's built-in standard library (`web_app.py` with SQLite `library.db`).
+3. 🖥️ **Desktop GUI Edition**: Native Tkinter desktop application (`main.py`).
+
+---
+
+## 🚀 Advanced Features & Tools
 
 ### 1. 📷 Real-Time Barcode & Card Camera Scanner
 * **Camera Viewfinder**: Real-time camera feed with targeting reticle and red laser sweep line animation (`navigator.mediaDevices.getUserMedia`).
-* **Handheld USB Scanner Compatible**: Supports physical USB barcode scanner guns (wedge input with auto-submit).
+* **Handheld USB Scanner Compatible**: Supports physical USB barcode scanner guns (keyboard wedge input with auto-submit).
 * **Smart Auto-Routing**:
   * Scanning a **Book Barcode** or typing an ID automatically opens the **"📤 Give Book"** dialog if available, or **"📥 Receive Book"** dialog if currently issued!
   * Scanning a **Member ID** (`#M-X`) instantly loads their profile or selects them as the borrower!
@@ -23,7 +37,7 @@ Includes both a **Modern Localhost Web App** (`web_app.py`) and a **Desktop GUI 
   * Member Type pill (`STUDENT` / `FACULTY` / `STAFF`)
   * Contact info (Email & Phone)
   * Live **Code 39 SVG Barcode** for laser/optical scanning
-* **1-Click Print**: Formatted with dedicated print CSS so clicking **"Print Library Card"** isolates and prints only the card at full DPI.
+* **1-Click Print**: Formatted with dedicated print CSS so clicking **"Print Library Card"** isolates and prints only the card at full DPI on card stock or paper. Available via the **"🪪 Card"** button on any member row.
 
 ### 3. 🧾 Printable 80mm Thermal Checkout Receipts
 * Generates thermal-style borrowing receipts on loan checkout:
@@ -72,9 +86,9 @@ Includes both a **Modern Localhost Web App** (`web_app.py`) and a **Desktop GUI 
 
 ---
 
-## 🚀 How to Run Locally
+## 💻 How to Run Locally
 
-### Web Edition on Localhost (Recommended)
+### Web Edition on Localhost
 ```bash
 git clone https://github.com/mandalantara300-jpg/Library-management-system-.git
 cd Library-management-system-
@@ -94,17 +108,10 @@ python3 main.py
 
 CampusShelf is cloud-ready and contains zero external dependencies:
 
-### Deploy to Render
-1. Create a free account at [render.com](https://render.com).
-2. Click **New +** $\to$ **Web Service** $\to$ connect `mandalantara300-jpg/Library-management-system-`.
-3. Render automatically detects `render.yaml`:
-   * **Runtime**: Python 3
-   * **Build Command**: `python3 seed_500_books.py`
-   * **Start Command**: `python3 web_app.py`
-4. Click **Deploy Web Service** — your library is live on the web with a free HTTPS URL!
-
-### Deploy with Docker
-```bash
-docker build -t campusshelf .
-docker run -p 8000:8000 campusshelf
-```
+* **Live GitHub Pages URL**: [https://mandalantara300-jpg.github.io/Library-management-system-/](https://mandalantara300-jpg.github.io/Library-management-system-/)
+* **Deploy to Render**: Connect repo on [render.com](https://render.com) using the included `render.yaml`.
+* **Deploy with Docker**:
+  ```bash
+  docker build -t campusshelf .
+  docker run -p 8000:8000 campusshelf
+  ```
